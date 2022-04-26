@@ -15,16 +15,13 @@ public class AuthorQuery implements GraphQLQueryResolver {
     @Autowired
     private AuthorService service;
 
-    public Author getAuthor(long id) {
-        return service.getAuthor(id);
+    public Author getAuthor(String name) {
+        return service.getAuthor(name);
     }
 
     public List<Author> getAuthors(){
         return service.getAllAuthors();
     }
 
-    public List<Author> getBooks(){
-        return service.getBooks();
-    }
 
 }

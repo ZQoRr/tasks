@@ -7,14 +7,8 @@ import java.util.List;
 
 public interface AuthorService {
 
-    public Author addAuthor(Author author);
-
-    public Author saveAuthor(String name);
-
-    public Author getAuthor(long id);
+    public Author saveAuthor(String name, List<Book> books);
+    public Author getAuthor(String name);
 
     public List<Author> getAllAuthors();
-
-    public List<Author> getBooks();
-
 }

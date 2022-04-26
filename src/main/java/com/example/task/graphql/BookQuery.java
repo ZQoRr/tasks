@@ -1,6 +1,7 @@
 package com.example.task.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.example.task.model.Author;
 import com.example.task.model.Book;
 import com.example.task.service.BookService;
 import com.example.task.service.BookServiceImpl;
@@ -15,12 +16,13 @@ public class BookQuery implements GraphQLQueryResolver {
     @Autowired
     private BookService service;
 
+
     public List<Book> getBooks(){
-        return service.getBooks();
+        return service.getAllBooks();
     }
 
-    public List<Book> getBooksByAuthor(){
-        return service.getBooksByAuthor();
+    public List<Book> getBooksByAuthor(Author author){
+        return service.getBooksByAuthor(author);
     }
 
 

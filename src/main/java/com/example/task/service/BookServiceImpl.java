@@ -18,11 +18,20 @@ public class BookServiceImpl implements BookService {
     Author author;
 
     @Override
-    public List<Book> getBooks() {
+    public Book saveBook(String title, List<Author> authors) {
+        final Book book = new Book();
+        book.setTitle(title);
+        book.setAuthors(authors);
+        return repository.saveAndFlush(book);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
         return repository.findAll();
     }
 
-    public List<Book> getBooksByAuthor(){
-        return repository.findBookByAuthors(author);
+    @Override
+    public List<Book> getBooksByAuthor(Author author) {
+        return  repository.findBookByAuthors(author);
     }
 }

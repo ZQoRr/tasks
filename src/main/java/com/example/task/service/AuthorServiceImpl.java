@@ -16,28 +16,22 @@ public class AuthorServiceImpl implements AuthorService{
 
 
     @Override
-    public Author addAuthor(Author author) {
-       Author saveAuthor = repository.saveAndFlush(author);
-       return saveAuthor;
-    }
-
-    @Override
-    public Author saveAuthor(String name) {
+    public Author saveAuthor(String name, List<Book> books) {
         final Author author = new Author();
         author.setName(name);
+        author.setBooks(books);
         return repository.save(author);
     }
 
-    public Author getAuthor(long id) {
-        return repository.getById(id);
+
+    @Override
+    public Author getAuthor(String name) {
+        return repository.findAuthorByName(name);
     }
+
 
     public List<Author> getAllAuthors() {
         return repository.findAll();
     }
 
-    @Override
-    public List<Author> getBooks() {
-        return repository.findAll();
-    }
 }
